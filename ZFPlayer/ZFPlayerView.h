@@ -41,46 +41,48 @@
 
 // playerLayer的填充模式（默认：等比例填充，直到一个维度到达区域边界）
 typedef NS_ENUM(NSInteger, ZFPlayerLayerGravity) {
-     ZFPlayerLayerGravityResize,           // 非均匀模式。两个维度完全填充至整个视图区域
-     ZFPlayerLayerGravityResizeAspect,     // 等比例填充，直到一个维度到达区域边界
-     ZFPlayerLayerGravityResizeAspectFill  // 等比例填充，直到填充满整个视图区域，其中一个维度的部分区域会被裁剪
+    ZFPlayerLayerGravityResize,         // 非均匀模式。两个维度完全填充至整个视图区域
+    ZFPlayerLayerGravityResizeAspect,   // 等比例填充，直到一个维度到达区域边界
+    ZFPlayerLayerGravityResizeAspectFill// 等比例填充，直到填充满整个视图区域，其中一个维度的部分区域会被裁剪
 };
 
 // 播放器的几种状态
 typedef NS_ENUM(NSInteger, ZFPlayerState) {
-    ZFPlayerStateFailed,     // 播放失败
-    ZFPlayerStateBuffering,  // 缓冲中
-    ZFPlayerStatePlaying,    // 播放中
-    ZFPlayerStateStopped,    // 停止播放
-    ZFPlayerStatePause       // 暂停播放
+    ZFPlayerStateFailed,   // 播放失败
+    ZFPlayerStateBuffering,// 缓冲中
+    ZFPlayerStatePlaying,  // 播放中
+    ZFPlayerStateStopped,  // 停止播放
+    ZFPlayerStatePause     // 暂停播放
 };
 
 @interface ZFPlayerView : UIView <ZFPlayerControlViewDelagate>
 
 /** 设置playerLayer的填充模式 */
-@property (nonatomic, assign) ZFPlayerLayerGravity    playerLayerGravity;
+@property (nonatomic, assign) ZFPlayerLayerGravity playerLayerGravity;
 /** 是否有下载功能(默认是关闭) */
-@property (nonatomic, assign) BOOL                    hasDownload;
+@property (nonatomic, assign) BOOL hasDownload;
+/** 是否有列表功能(默认是关闭) */
+@property (nonatomic, assign) BOOL hasList;
 /** 是否开启预览图 */
-@property (nonatomic, assign) BOOL                    hasPreviewView;
+@property (nonatomic, assign) BOOL hasPreviewView;
 /** 设置代理 */
-@property (nonatomic, weak) id<ZFPlayerDelegate>      delegate;
+@property (nonatomic, weak) id<ZFPlayerDelegate> delegate;
 /** 是否被用户暂停 */
-@property (nonatomic, assign, readonly) BOOL          isPauseByUser;
+@property (nonatomic, assign, readonly) BOOL isPauseByUser;
 /** 播发器的几种状态 */
 @property (nonatomic, assign, readonly) ZFPlayerState state;
 /** 静音（默认为NO）*/
-@property (nonatomic, assign) BOOL                    mute;
+@property (nonatomic, assign) BOOL mute;
 /** 当cell划出屏幕的时候停止播放（默认为NO） */
-@property (nonatomic, assign) BOOL                    stopPlayWhileCellNotVisable;
+@property (nonatomic, assign) BOOL stopPlayWhileCellNotVisable;
 /** 当cell播放视频由全屏变为小屏时候，是否回到中间位置(默认YES) */
-@property (nonatomic, assign) BOOL                    cellPlayerOnCenter;
+@property (nonatomic, assign) BOOL cellPlayerOnCenter;
 /** player在栈上，即此时push或者模态了新控制器 */
-@property (nonatomic, assign) BOOL                    playerPushedOrPresented;
+@property (nonatomic, assign) BOOL playerPushedOrPresented;
 /** 添加平移手势，用来控制音量、亮度、快进快退 */
-@property (nonatomic, assign) BOOL                    disablePanGesture;
+@property (nonatomic, assign) BOOL disablePanGesture;
 /** 是否强制竖屏播放，默认为NO */
-@property (nonatomic, assign) BOOL                    forcePortrait;
+@property (nonatomic, assign) BOOL forcePortrait;
 /// 播放时候默认自动全屏
 @property (nonatomic, assign) BOOL                    fullScreenPlay;
 

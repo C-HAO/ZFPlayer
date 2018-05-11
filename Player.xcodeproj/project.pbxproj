@@ -461,8 +461,8 @@
 				TargetAttributes = {
 					4947F7891BE996AC003093C8 = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = B9FH944VTE;
-						ProvisioningStyle = Manual;
+						DevelopmentTeam = VB8H46N7M3;
+						ProvisioningStyle = Automatic;
 					};
 					4947F7A21BE996AC003093C8 = {
 						CreatedOnToolsVersion = 7.0;
@@ -724,15 +724,16 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = B9FH944VTE;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VB8H46N7M3;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Player/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.renzifeng.Player;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d96e7a87-72df-4670-b8aa-4a1558bd705b";
-				PROVISIONING_PROFILE_SPECIFIER = wildcard_dev;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -741,9 +742,10 @@
 			baseConfigurationReference = 5025702D2252268F74E00592 /* Pods-Player.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				DEVELOPMENT_TEAM = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VB8H46N7M3;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = Player/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -751,6 +753,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.renzifeng.Player;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

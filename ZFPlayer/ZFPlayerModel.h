@@ -44,6 +44,16 @@
  * 例如: @{@"高清" : @"https://xx/xx-hd.mp4", @"标清" : @"https://xx/xx-sd.mp4"}
  */
 @property (nonatomic, strong) NSDictionary<NSString *, NSString *> *resolutionDic;
+/**
+ * 视频播放速率组
+ * 例如: @"0.8X", @"1.0X", @"1.25X", @"1.5X", @"1.75X", @"2.0X"
+ */
+@property (nonatomic, strong) NSArray <NSString *> *playRate;
+/**
+ * 视频播放速率
+ * 例如: 对应playRate 序号, 默认 1  @"1.0X"
+ */
+@property (nonatomic, assign) NSInteger rateBlock;
 /** 从xx秒开始播放视频(默认0) */
 @property (nonatomic, assign) NSInteger    seekTime;
 // cell播放视频，以下属性必须设置值

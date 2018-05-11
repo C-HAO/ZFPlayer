@@ -77,6 +77,10 @@
  * 是否有下载功能
  */
 - (void)zf_playerHasDownloadFunction:(BOOL)sender {}
+/**
+ * 是否有列表功能
+ */
+- (void)zf_playerHasListFunction:(BOOL)sender {}
 
 /**
  * 下载按钮状态
@@ -88,6 +92,11 @@
  * @param resolutionArray 分辨率名称的数组
  */
 - (void)zf_playerResolutionArray:(NSArray *)resolutionArray {}
+/**
+ * 是否有切换速率功能
+ * @param rateArray 速率名称的数组
+ */
+- (void)zf_playerRateArray:(NSArray *)rateArray {}
 
 /**
  * 播放按钮状态 (播放、暂停状态)

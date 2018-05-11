@@ -1399,6 +1399,13 @@ typedef NS_ENUM(NSInteger, PanDirection){
     _hasDownload = hasDownload;
     [self.controlView zf_playerHasDownloadFunction:hasDownload];
 }
+/**
+ *  是否有列表功能
+ */
+- (void)setHasList:(BOOL)hasList {
+    _hasList = hasList;
+    [self.controlView zf_playerHasListFunction:hasList];
+}
 
 - (void)setResolutionDic:(NSDictionary *)resolutionDic {
     _resolutionDic = resolutionDic;
@@ -1570,10 +1577,10 @@ typedef NS_ENUM(NSInteger, PanDirection){
      [self configZFPlayer];
 }
 
-- (void)zf_controlView:(UIView *)controlView resolutionAction:(UIButton *)sender {
+- (void)zf_controlView:(UIView *)controlView resolutionAction:(NSInteger)index {
     // 记录切换分辨率的时刻
     NSInteger currentTime = (NSInteger)CMTimeGetSeconds([self.player currentTime]);
-    NSString *videoStr = self.videoURLArray[sender.tag - 200];
+    NSString *videoStr = self.videoURLArray[index];
     NSURL *videoURL = [NSURL URLWithString:videoStr];
     if ([videoURL isEqual:self.videoURL]) { return; }
     self.isChangeResolution = YES;
@@ -1584,6 +1591,15 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self.seekTime = currentTime;
     // 切换完分辨率自动播放
     [self autoPlayTheVideo];
+}
+
+- (void)zf_controlView:(UIView *)controlView rateAction:(NSInteger)index {
+    self.playerModel.rateBlock = index;
+    [self pause];
+    [self play];
+    
+    CGFloat rate = self.playerModel.playRate[index].floatValue;
+    [self.player setRate:rate];
 }
 
 - (void)zf_controlView:(UIView *)controlView downloadVideoAction:(UIButton *)sender {
