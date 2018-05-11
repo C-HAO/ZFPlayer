@@ -32,6 +32,14 @@
     return _placeholderImage;
 }
 
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.playRate = @[ @"0.8X", @"1.0X", @"1.25X", @"1.5X", @"1.75X", @"2.0X" ];
+        self.rateBlock = 1;
+    }
+    return self;
+}
 
 @end
