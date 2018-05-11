@@ -1137,6 +1137,8 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     } completion:^(BOOL finished) {
         self.showing = NO;
     }];
+    
+    [self hideTableView];
 }
 
 /** 小屏播放 */
