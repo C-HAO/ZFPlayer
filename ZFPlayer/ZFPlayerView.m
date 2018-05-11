@@ -971,7 +971,15 @@ typedef NS_ENUM(NSInteger, PanDirection){
         else {
             if (self.playDidEnd) { return; }
             else {
-                [self.controlView zf_playerShowOrHideControlView];
+                if ([self.controlView respondsToSelector:@selector(zf_playerShowOrHideControlView:)]) {
+                    CGPoint point = [gesture locationInView:self.controlView];
+                    BOOL hide = [self.controlView zf_playerShowOrHideControlView:point];
+                    if (hide) {
+                        [self.controlView zf_playerShowOrHideControlView];
+                    }
+                }else {
+                    [self.controlView zf_playerShowOrHideControlView];
+                }
             }
         }
     }

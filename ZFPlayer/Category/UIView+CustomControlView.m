@@ -40,6 +40,8 @@
 - (void)zf_playerModel:(ZFPlayerModel *)playerModel {}
 
 - (void)zf_playerShowOrHideControlView {}
+
+- (BOOL)zf_playerShowOrHideControlView:(CGPoint)touchPoint { return YES; }
 /**
  * 显示top、bottom、lockBtn
  */
@@ -81,6 +83,10 @@
  * 是否有列表功能
  */
 - (void)zf_playerHasListFunction:(BOOL)sender {}
+/**
+ * 是否有速率功能
+ */
+- (void)zf_playerHasRateFunction:(BOOL)sender {}
 
 /**
  * 下载按钮状态

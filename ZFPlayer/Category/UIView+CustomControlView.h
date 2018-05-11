@@ -34,6 +34,8 @@
  */
 - (void)zf_playerModel:(ZFPlayerModel *)playerModel;
 
+- (BOOL)zf_playerShowOrHideControlView:(CGPoint)touchPoint;
+
 - (void)zf_playerShowOrHideControlView;
 /** 
  * 显示控制层

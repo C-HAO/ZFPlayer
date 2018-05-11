@@ -344,6 +344,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 {
     if (self.rateView.hidden) {
         [self zf_playerRateArray:self.rateArray];
+        self.rateView.hidden  = NO;
     }else {
         // 隐藏速率View
         self.rateView.hidden = YES;
@@ -364,6 +365,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 - (void)changeResolution:(UIButton *)sender {
     if (self.resolutionView.hidden) {
         [self zf_playerResolutionArray:self.resolutionArray];
+        self.resolutionView.hidden  = NO;
     }else {
         // 隐藏分辨率View
         self.resolutionView.hidden  = YES;
@@ -623,7 +625,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     self.lockBtn.alpha            = 0;
     self.bottomProgressView.alpha = 1;
     // 隐藏resolutionView
-    [self resolutionBtnClick:self.resolutionBtn];
+    self.resolutionView.hidden = YES;
     // 隐藏rateView
     self.rateView.hidden = YES;
     if (self.isFullScreen && !self.playeEnd && !self.isShrink) {
@@ -1089,14 +1091,21 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 }
 
 - (void)zf_playerShowOrHideControlView {
-    if (self.isShowList) {
-        [self hideTableView];
+    if (self.isShowing) {
+        [self zf_playerHideControlView];
+    } else {
+        [self zf_playerShowControlView];
+    }
+}
+- (BOOL)zf_playerShowOrHideControlView:(CGPoint)touchPoint {
+    if (!self.isShowList) {
+        return YES;
     }else {
-        if (self.isShowing) {
-            [self zf_playerHideControlView];
-        } else {
-            [self zf_playerShowControlView];
+        CGPoint point = [self convertPoint:touchPoint toView:self.tableView];
+        if (point.x < 0) {
+            return YES;
         }
+        return NO;
     }
 }
 /**
