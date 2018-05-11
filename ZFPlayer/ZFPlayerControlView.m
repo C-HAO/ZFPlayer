@@ -342,14 +342,18 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 //点击切换速率
 - (void)changeRate:(UIButton *)sender
 {
-    // 隐藏速率View
-    self.rateView.hidden = YES;
-    // 速率Btn改为normal状态
-    self.videoRateBtn.selected = NO;
-    // topImageView上的按钮的文字
-    [self.videoRateBtn setTitle:sender.titleLabel.text forState:UIControlStateNormal];
-    if ([self.delegate respondsToSelector:@selector(zf_controlView:rateAction:)]) {
-        [self.delegate zf_controlView:self rateAction:sender.tag];
+    if (self.rateView.hidden) {
+        [self zf_playerRateArray:self.rateArray];
+    }else {
+        // 隐藏速率View
+        self.rateView.hidden = YES;
+        // 速率Btn改为normal状态
+        self.videoRateBtn.selected = NO;
+        // topImageView上的按钮的文字
+        [self.videoRateBtn setTitle:sender.titleLabel.text forState:UIControlStateNormal];
+        if ([self.delegate respondsToSelector:@selector(zf_controlView:rateAction:)]) {
+            [self.delegate zf_controlView:self rateAction:sender.tag];
+        }
     }
 }
 
@@ -358,12 +362,16 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
  *  点击切换分别率按钮
  */
 - (void)changeResolution:(UIButton *)sender {
-    // 隐藏分辨率View
-    self.resolutionView.hidden  = YES;
-    // topImageView上的按钮的文字
-    [self.resolutionBtn setTitle:sender.titleLabel.text forState:UIControlStateNormal];
-    if ([self.delegate respondsToSelector:@selector(zf_controlView:resolutionAction:)]) {
-        [self.delegate zf_controlView:self resolutionAction:sender.tag];
+    if (self.resolutionView.hidden) {
+        [self zf_playerResolutionArray:self.resolutionArray];
+    }else {
+        // 隐藏分辨率View
+        self.resolutionView.hidden  = YES;
+        // topImageView上的按钮的文字
+        [self.resolutionBtn setTitle:sender.titleLabel.text forState:UIControlStateNormal];
+        if ([self.delegate respondsToSelector:@selector(zf_controlView:resolutionAction:)]) {
+            [self.delegate zf_controlView:self resolutionAction:sender.tag];
+        }
     }
 }
 
