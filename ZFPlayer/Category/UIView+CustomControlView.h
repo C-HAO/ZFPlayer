@@ -37,10 +37,6 @@
 - (BOOL)zf_playerShowOrHideControlView:(CGPoint)touchPoint;
 
 - (void)zf_playerShowOrHideControlView;
-/**
- *
- */
-- (BOOL)zf_playerTouchTableView:(UIView *)touchView;
 /** 
  * 显示控制层
  */

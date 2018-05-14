@@ -40,8 +40,6 @@
 - (void)zf_playerModel:(ZFPlayerModel *)playerModel {}
 
 - (void)zf_playerShowOrHideControlView {}
-
-- (BOOL)zf_playerTouchTableView:(UIView *)touchView { return YES; }
 /**
  * 显示top、bottom、lockBtn
  */

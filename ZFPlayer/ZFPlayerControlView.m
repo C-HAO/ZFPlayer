@@ -1007,6 +1007,10 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 #pragma mark - UIGestureRecognizerDelegate
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch {
+    if (self.tableView == touch.view){
+        return NO;
+    }
+    
     CGRect rect = [self thumbRect];
     CGPoint point = [touch locationInView:self.videoSlider];
     if ([touch.view isKindOfClass:[UISlider class]]) { // 如果在滑块上点击就不响应pan手势
@@ -1107,13 +1111,6 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         }
         return NO;
     }
-}
-
-- (BOOL)zf_playerTouchTableView:(UIView *)touchView {
-    if (self.tableView == touchView){
-        return NO;
-    }
-    return YES;
 }
 
 /**
