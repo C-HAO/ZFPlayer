@@ -1273,6 +1273,12 @@ typedef NS_ENUM(NSInteger, PanDirection){
     if ([gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]]) {
         if (self.isBottomVideo && !self.isFullScreen) {
             return NO;
+        } else {
+            CGPoint point = [gestureRecognizer locationInView:self.controlView];
+            BOOL touch = [self.controlView zf_playerTouchTableView:point];
+            if (touch) {
+                return NO;
+            }
         }
     }
     if ([touch.view isKindOfClass:[UISlider class]]) {
