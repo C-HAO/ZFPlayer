@@ -1101,16 +1101,13 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
         [self zf_playerShowControlView];
     }
 }
-- (BOOL)zf_playerShowOrHideControlView:(CGPoint)touchPoint {
-    if (!self.isShowList) {
-        return YES;
-    }else {
-        CGPoint point = [self convertPoint:touchPoint toView:self.tableView];
-        if (point.x < 0) {
-            return YES;
-        }
+
+- (BOOL)zf_playerTouchTableView:(UIView *)touchView {
+    if (self.tableView == touchView){
         return NO;
     }
+    
+    return YES;
 }
 
 /**
