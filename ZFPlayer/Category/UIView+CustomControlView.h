@@ -38,9 +38,9 @@
 
 - (void)zf_playerShowOrHideControlView;
 /**
- * 是否点击列表
+ *
  */
-- (BOOL)zf_playerTouchTableView:(CGPoint)touchPoint;
+- (BOOL)zf_playerTouchTableView:(UIView *)touchView;
 /** 
  * 显示控制层
  */

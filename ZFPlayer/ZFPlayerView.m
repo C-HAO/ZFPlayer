@@ -971,15 +971,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         else {
             if (self.playDidEnd) { return; }
             else {
-                if ([self.controlView respondsToSelector:@selector(zf_playerShowOrHideControlView:)]) {
-                    CGPoint point = [gesture locationInView:self.controlView];
-                    BOOL hide = [self.controlView zf_playerShowOrHideControlView:point];
-                    if (hide) {
-                        [self.controlView zf_playerShowOrHideControlView];
-                    }
-                }else {
-                    [self.controlView zf_playerShowOrHideControlView];
-                }
+                [self.controlView zf_playerShowOrHideControlView];
             }
         }
     }
@@ -1274,10 +1266,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
         if (self.isBottomVideo && !self.isFullScreen) {
             return NO;
         } else {
-            CGPoint point = [gestureRecognizer locationInView:self.controlView];
-            BOOL touch = [self.controlView zf_playerTouchTableView:point];
-            if (touch) {
-                return NO;
+            if ([self.controlView respondsToSelector:@selector(zf_playerTouchTableView:)]) {
+                return [self.controlView zf_playerTouchTableView:touch.view];
             }
         }
     }

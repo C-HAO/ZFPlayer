@@ -41,9 +41,7 @@
 
 - (void)zf_playerShowOrHideControlView {}
 
-- (BOOL)zf_playerShowOrHideControlView:(CGPoint)touchPoint { return YES; }
-
-- (BOOL)zf_playerTouchTableView:(CGPoint)touchPoint { return YES; }
+- (BOOL)zf_playerTouchTableView:(UIView *)touchView { return YES; }
 /**
  * 显示top、bottom、lockBtn
  */
