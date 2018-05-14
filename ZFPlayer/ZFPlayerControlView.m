@@ -1103,7 +1103,7 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
 }
 
 - (BOOL)zf_playerTouchTableView:(UIView *)touchView {
-    if (self.tableView == touchView){
+    if ([NSStringFromClass([touchView class]) isEqualToString:@"UITableViewCellContentView"]) {
         return NO;
     }
     
