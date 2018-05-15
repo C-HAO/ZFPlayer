@@ -314,6 +314,12 @@ typedef NS_ENUM(NSInteger, PanDirection){
     [self resetPlayer];
     self.playerModel = playerModel;
     [self configZFPlayer];
+    //处理横竖屏
+    if (self.isFullScreen) {
+        [self toOrientation:UIInterfaceOrientationLandscapeRight];
+    }else {
+        [self toOrientation:UIInterfaceOrientationPortrait];
+    }
 }
 
 /**
