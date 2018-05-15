@@ -1335,6 +1335,10 @@ typedef NS_ENUM(NSInteger, PanDirection){
         NSError *error = [self.playerItem error];
         [self.controlView zf_playerItemStatusFailed:error];
     }
+    
+    if ([self.delegate respondsToSelector:@selector(zf_playerControlView:playerState:)]) {
+        [self.delegate zf_playerControlView:self.controlView playerState:state];
+    }
 }
 
 /**

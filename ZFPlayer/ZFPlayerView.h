@@ -26,21 +26,6 @@
 #import "ZFPlayerModel.h"
 #import "ZFPlayerControlViewDelegate.h"
 
-@protocol ZFPlayerDelegate <NSObject>
-@optional
-/** 返回按钮事件 */
-- (void)zf_playerBackAction;
-/** 下载视频 */
-- (void)zf_playerDownload:(NSString *)url;
-/** 控制层即将显示 */
-- (void)zf_playerControlViewWillShow:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
-/** 控制层即将隐藏 */
-- (void)zf_playerControlViewWillHidden:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
-/** 横竖屏切换 */
-- (void)zf_playerControlViewSwitch:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
-
-@end
-
 // playerLayer的填充模式（默认：等比例填充，直到一个维度到达区域边界）
 typedef NS_ENUM(NSInteger, ZFPlayerLayerGravity) {
     ZFPlayerLayerGravityResize,         // 非均匀模式。两个维度完全填充至整个视图区域
@@ -56,6 +41,25 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
     ZFPlayerStateStopped,  // 停止播放
     ZFPlayerStatePause     // 暂停播放
 };
+
+
+@protocol ZFPlayerDelegate <NSObject>
+@optional
+/** 返回按钮事件 */
+- (void)zf_playerBackAction;
+/** 下载视频 */
+- (void)zf_playerDownload:(NSString *)url;
+/** 控制层即将显示 */
+- (void)zf_playerControlViewWillShow:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
+/** 控制层即将隐藏 */
+- (void)zf_playerControlViewWillHidden:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
+/** 横竖屏切换 */
+- (void)zf_playerControlViewSwitch:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
+/** 视频播放状态变化 */
+- (void)zf_playerControlView:(UIView *)controlView playerState:(ZFPlayerState)playerState;
+
+@end
+
 
 @interface ZFPlayerView : UIView <ZFPlayerControlViewDelagate>
 
