@@ -36,6 +36,8 @@
 - (void)zf_playerControlViewWillShow:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
 /** 控制层即将隐藏 */
 - (void)zf_playerControlViewWillHidden:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
+/** 横竖屏切换 */
+- (void)zf_playerControlViewSwitch:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
 
 @end
 

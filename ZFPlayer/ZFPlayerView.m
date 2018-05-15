@@ -777,9 +777,15 @@ typedef NS_ENUM(NSInteger, PanDirection){
     if (orientation == UIInterfaceOrientationLandscapeRight || orientation == UIInterfaceOrientationLandscapeLeft) {
         // 设置横屏
         [self setOrientationLandscapeConstraint:orientation];
+        if ([self.delegate respondsToSelector:@selector(zf_playerControlViewSwitch:isFullscreen:)]) {
+            [self.delegate zf_playerControlViewSwitch:self.controlView isFullscreen:YES];
+        }
     } else if (orientation == UIInterfaceOrientationPortrait) {
         // 设置竖屏
         [self setOrientationPortraitConstraint];
+        if ([self.delegate respondsToSelector:@selector(zf_playerControlViewSwitch:isFullscreen:)]) {
+            [self.delegate zf_playerControlViewSwitch:self.controlView isFullscreen:NO];
+        }
     }
 }
 
