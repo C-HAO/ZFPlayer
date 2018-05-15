@@ -55,8 +55,8 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
 - (void)zf_playerControlViewWillHidden:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
 /** 横竖屏切换 */
 - (void)zf_playerControlViewSwitch:(UIView *)controlView isFullscreen:(BOOL)fullscreen;
-/** 视频播放状态变化 */
-- (void)zf_playerControlView:(UIView *)controlView playerState:(ZFPlayerState)playerState;
+/** 视频播放状态变化, 播放进度 */
+- (void)zf_playerState:(ZFPlayerState)playerState playback:(NSInteger)progress;
 
 @end
 

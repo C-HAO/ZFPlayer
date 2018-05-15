@@ -452,11 +452,15 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self.timeObserve = [self.player addPeriodicTimeObserverForInterval:CMTimeMakeWithSeconds(1, 1) queue:nil usingBlock:^(CMTime time){
         AVPlayerItem *currentItem = weakSelf.playerItem;
         NSArray *loadedRanges = currentItem.seekableTimeRanges;
+        NSInteger currentTime = (NSInteger)CMTimeGetSeconds([currentItem currentTime]);
         if (loadedRanges.count > 0 && currentItem.duration.timescale != 0) {
-            NSInteger currentTime = (NSInteger)CMTimeGetSeconds([currentItem currentTime]);
             CGFloat totalTime     = (CGFloat)currentItem.duration.value / currentItem.duration.timescale;
             CGFloat value         = CMTimeGetSeconds([currentItem currentTime]) / totalTime;
             [weakSelf.controlView zf_playerCurrentTime:currentTime totalTime:totalTime sliderValue:value];
+        }
+        
+        if ([weakSelf.delegate respondsToSelector:@selector(zf_playerState:playback:)]) {
+            [weakSelf.delegate zf_playerState:weakSelf.state playback:currentTime];
         }
     }];
 }
@@ -1336,9 +1340,14 @@ typedef NS_ENUM(NSInteger, PanDirection){
         [self.controlView zf_playerItemStatusFailed:error];
     }
     
-    if ([self.delegate respondsToSelector:@selector(zf_playerControlView:playerState:)]) {
-        [self.delegate zf_playerControlView:self.controlView playerState:state];
+    if ([self.delegate respondsToSelector:@selector(zf_playerState:playback:)]) {
+        [self.delegate zf_playerState:state playback:self.seekTime];
     }
+}
+
+- (void)setSeekTime:(NSInteger)seekTime
+{
+    _seekTime = seekTime;
 }
 
 /**
