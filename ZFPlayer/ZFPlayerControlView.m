@@ -592,9 +592,10 @@ static const CGFloat ZFPlayerControlBarAutoFadeOutTimeInterval = 0.35f;
     
     [self toolbarLayoutSubviews:YES];
 
-    if (self.isCellVideo) {
-        [self.backBtn setImage:ZFPlayerImage(@"ZFPlayer_close") forState:UIControlStateNormal];
-    }
+    [self.backBtn setImage:ZFPlayerImage(@"ZFPlayer_close") forState:UIControlStateNormal];
+//    if (self.isCellVideo) {
+//        [self.backBtn setImage:ZFPlayerImage(@"ZFPlayer_close") forState:UIControlStateNormal];
+//    }
 }
 
 #pragma mark - Private Method
