@@ -1565,6 +1565,9 @@ typedef NS_ENUM(NSInteger, PanDirection){
             if ([self.delegate respondsToSelector:@selector(zf_playerBackAction)]) { [self.delegate zf_playerBackAction]; }
         } else {
             [self interfaceOrientation:UIInterfaceOrientationPortrait];
+            if ([self.delegate respondsToSelector:@selector(zf_playerFullscreenBackAction)]) {
+                [self.delegate zf_playerFullscreenBackAction];
+            }
         }
     }
 }

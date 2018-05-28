@@ -45,8 +45,10 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
 
 @protocol ZFPlayerDelegate <NSObject>
 @optional
-/** 返回按钮事件 */
+/** 返回小屏按钮事件 */
 - (void)zf_playerBackAction;
+/** 返回大屏按钮事件 */
+- (void)zf_playerFullscreenBackAction;
 /** 下载视频 */
 - (void)zf_playerDownload:(NSString *)url;
 /** 控制层即将显示 */
