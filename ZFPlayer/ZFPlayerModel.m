@@ -23,6 +23,7 @@
 #import "ZFPlayerModel.h"
 #import "ZFPlayer.h"
 
+
 @implementation ZFPlayerModel
 
 - (UIImage *)placeholderImage {
@@ -37,9 +38,25 @@
     self = [super init];
     if (self) {
         self.playRate = @[ @"0.8X", @"1.0X", @"1.25X", @"1.5X", @"1.75X", @"2.0X" ];
-        self.rateBlock = 1;
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if (![defaults objectForKey:@"ZFPlayer_RATE"]) {
+            [defaults setInteger:1 forKey:@"ZFPlayer_RATE"];
+        }
+        
+        NSInteger rate = [defaults integerForKey:@"ZFPlayer_RATE"];
+        self.rateBlock = rate;
     }
     return self;
+}
+
+- (void)setRateBlock:(NSInteger)rateBlock
+{
+    _rateBlock = rateBlock;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setInteger:rateBlock forKey:@"ZFPlayer_RATE"];
+    [defaults synchronize];
 }
 
 @end
