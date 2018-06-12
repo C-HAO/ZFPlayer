@@ -1136,7 +1136,10 @@ typedef NS_ENUM(NSInteger, PanDirection){
             [weakSelf.controlView zf_playerActivity:NO];
             // 视频跳转回调
             if (completionHandler) { completionHandler(finished); }
+            
             [weakSelf.player play];
+            NSString *rate = [weakSelf.playerModel.playRate objectAtIndex:weakSelf.playerModel.rateBlock];
+            [weakSelf.player setRate:rate.floatValue];
             weakSelf.seekTime = 0;
             weakSelf.isDragged = NO;
             // 结束滑动
