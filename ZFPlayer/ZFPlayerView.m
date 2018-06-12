@@ -329,6 +329,9 @@ typedef NS_ENUM(NSInteger, PanDirection){
     if (self.state == ZFPlayerStatePause) { self.state = ZFPlayerStatePlaying; }
     self.isPauseByUser = NO;
     [_player play];
+    
+    NSString *rate = [self.playerModel.playRate objectAtIndex:self.playerModel.rateBlock];
+    [_player setRate:rate.floatValue];
 }
 
 /**
@@ -1634,9 +1637,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self.playerModel.rateBlock = index;
     [self pause];
     [self play];
-    
-    CGFloat rate = self.playerModel.playRate[index].floatValue;
-    [self.player setRate:rate];
 }
 
 - (void)zf_controlView:(UIView *)controlView downloadVideoAction:(UIButton *)sender {
