@@ -389,8 +389,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     // 此处为默认视频填充模式
     self.playerLayer.videoGravity = self.videoGravity;
     
-    [self addObserver:<#(nonnull NSObject *)#> forKeyPath:<#(nonnull NSString *)#> options:<#(NSKeyValueObservingOptions)#> context:<#(nullable void *)#>];
-    
+
     // 自动播放
     self.isAutoPlay = YES;
     
