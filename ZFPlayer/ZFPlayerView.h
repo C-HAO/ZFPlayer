@@ -96,6 +96,8 @@ typedef NS_ENUM(NSInteger, ZFPlayerState) {
 /** 视频播放进度 */
 @property (nonatomic, assign, readonly) NSInteger seekTime;
 
+@property (nonatomic, copy) void (^playerErrorBlock)(NSError *);
+
 /**
  *  单例，用于列表cell上多个视频
  *

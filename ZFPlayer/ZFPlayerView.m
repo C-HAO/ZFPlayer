@@ -389,6 +389,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
     // 此处为默认视频填充模式
     self.playerLayer.videoGravity = self.videoGravity;
     
+    [self addObserver:<#(nonnull NSObject *)#> forKeyPath:<#(nonnull NSString *)#> options:<#(NSKeyValueObservingOptions)#> context:<#(nullable void *)#>];
+    
     // 自动播放
     self.isAutoPlay = YES;
     
@@ -583,6 +585,11 @@ typedef NS_ENUM(NSInteger, PanDirection){
             // 当缓冲好的时候
             if (self.playerItem.playbackLikelyToKeepUp && self.state == ZFPlayerStateBuffering){
                 self.state = ZFPlayerStatePlaying;
+            }
+        } else if ([keyPath isEqualToString:@"error"]) {
+            NSError *error = [change objectForKey:NSKeyValueChangeNewKey];
+            if (error && [error isKindOfClass:[NSError class]]) {
+                (self.playerErrorBlock)? self.playerErrorBlock(error) : nil;
             }
         }
     } else if (object == self.scrollView) {
@@ -1380,6 +1387,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         [_playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
         [_playerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
         [_playerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
+        [_playerItem removeObserver:self forKeyPath:@"error"];
     }
     _playerItem = playerItem;
     if (playerItem) {
@@ -1390,6 +1398,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
         [playerItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
         // 缓冲区有足够数据可以播放了
         [playerItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
+        
+        [playerItem addObserver:self forKeyPath:@"error" options:NSKeyValueObservingOptionNew context:nil];
     }
 }
 
